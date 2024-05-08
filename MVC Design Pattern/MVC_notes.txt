@@ -1,0 +1,10 @@
+Q 1] Why there is need of MVC architecture? Why don't we write the business logic,UI logic and the Database login inside the single file?
+--> There are certain reasons for which we are using MVC architecture:
+	1. Suppose if we want to develop the website and we have UI developer and Java developer. In this case if the UI developer is working on the code then the JAVA developer has to wait until UI developer finishes its work.
+	2. Suppose after certain period I want to update my developed website then in that case it will be difficult for the developers to understand the code and to make changes within it.
+
+Hence the organization of the code has been important and which is provided by the MVC.
+
+
+
+
