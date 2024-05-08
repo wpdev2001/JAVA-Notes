@@ -55,11 +55,13 @@ Then we use the following annotation in order to call the particular servlet
 @WebServlet("/register")
 
 # response.sendRedirect("<url>");
-//This method is used to redirect to the specific url externally.
+--------------------------------
+//This method of HttpServletResponse and is used to redirect to the specific url externally.(i.e., to servlet or JSP or html etc.)
 
 
 #If we want to redirect to the application internally within the project then we make a use of RequestDispatcher.
-
+#RequestDispatcher
+------------------
 Syntax:
 -------
 
@@ -72,13 +74,31 @@ Syntax:
  RequestDispatcher rd = req.getRequestDispatcher("/profile.html"); //If it is an HTML file
  rd.forward(req,res)
 
+NOTE: RequestDispatcher doesn't change the URL string of the browser!!!
 
 
 Instead of using forward method we can make an use of include method which includes the html content as well as backend within the same source file
- res.setContentType("text/html");
+ res.setContentType("text/html");  // This will load the proper index.html instead of priniting the source code.
  out.println("<h3>Password didn't message</h3>");
  rd.include(req,res);
 
+Q] Difference between sendRedirect() method and RequestDispatcher Interface?
+
+  sendRedirect() method                                       RequestDispatcher Interface
+1. It is used for external request redirecetion.                1. It is used for internal request redirection
+2. It redirects the request to a different                      2. It forwards or includes the request to the same
+   application or URL                                              application or URL
+3. It is called by HttpServletResponse object.                  3. It has 2 methods, forward() and include()
+4. Syntax:                                                      4. Syntax:
+   i.  For any URL:                                                i.  forward() method:
+      resp.sendRedirect("<URL string>");                              RequestDispatcher rd = 
+                                                                      req.getRequestDispatcher("/profile.jsp");
+                                                                      rd.forward(req,res)
+   ii. For any Servlet:                                            ii. include() method:
+      resp.sendRedirect(/servlet2);                                   RequestDispatcher rd = 
+                                                                      req.getRequestDispatcher("/profile.jsp");
+                                                                      rd.include(req,res)    
+5. It doesn't change the URL on the browser.                    5. It doesn not change the URL on the browser.
 
 Tags:
 
