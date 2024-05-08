@@ -1,1 +1,96 @@
-This is a demo file
+We have following hierarchy in servlet
+
+Servlet<interface>
+
+GenericServlet<class>
+
+HttpServlet<class> ==> Mostly we use this
+
+MyServlet
+
+------------------------------------------
+
+Servlet Life-Cycle:
+
+1. Loading and Instantiation (Servlet object is created)
+2. Initialization (Servlet object will be initialized by invoking the init method!!)
+3. Request Handling (service() method will be invoked)
+4. Destroy
+
+Deployment Descriptor(web.xml)
+
+It is the servlet mapping file
+
+Syntax: 
+<servlet-mapping>
+<servlet-name>mlog</servlet-name>
+<url-pattern>/mylogin</url-pattern>
+</servlet-mapping>
+
+<servlet>
+<servlet-name>mlog</servlet-name>
+<servlet-class>com.wp.MyServlet</servlet-class>
+</servlet>
+
+NOTE: We create an html file inside webapp folder
+If we do not want to use web.xml then we can instead use annotations(untick generate web.xml file option)
+
+Suppose we have index.html as below:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<a href="login">Login</a>
+<a href="register">Register</a>
+</body>
+</html>
+
+
+Then we use the following annotation in order to call the particular servlet
+
+@WebServlet("/login") OR
+@WebServlet("/register")
+
+# response.sendRedirect("<url>");
+//This method is used to redirect to the specific url externally.
+
+
+#If we want to redirect to the application internally within the project then we make a use of RequestDispatcher.
+
+Syntax:
+-------
+
+ RequestDispatcher rd = req.getRequestDispatcher("/profile.jsp"); OR  //If it is an jsp file
+ rd.forward(req,res)
+
+ RequestDispatcher rd = req.getRequestDispatcher("/profile"); OR  //If it is an Servlet file(profile.java)
+ rd.forward(req,res)
+
+ RequestDispatcher rd = req.getRequestDispatcher("/profile.html"); //If it is an HTML file
+ rd.forward(req,res)
+
+
+
+Instead of using forward method we can make an use of include method which includes the html content as well as backend within the same source file
+ res.setContentType("text/html");
+ out.println("<h3>Password didn't message</h3>");
+ rd.include(req,res);
+
+
+Tags:
+
+1. <% %> : Scriplet tag --> It is use to embed the java code within servlet.jsp file
+
+
+SESSIONS:
+
+It is created through request object
+Syntax:
+1. HttpSession hs = req.getSession(); //creating session object
+2. hs.setAttribute("key",value); //storing a value inside session
+3. Object ob = hs.getAttribute("key"); //retrieving the stored session attribute
+4. hs.removeAttribute("key"); //In order to remove particular session object
+5. hs.invalidate(); //To destroy whole session object
