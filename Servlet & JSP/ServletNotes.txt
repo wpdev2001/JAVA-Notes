@@ -120,7 +120,7 @@ In summary, the include method includes the content of another servlet or resour
 
 Tags:
 
-1. <% %> : Scriplet tag --> It is use to embed the java code within servlet.jsp file
+1. <% %> : Scriplet tag --> It is use to embedd the java code within servlet.jsp file
 
 
 SESSIONS:
