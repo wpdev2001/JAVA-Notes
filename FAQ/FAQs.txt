@@ -38,3 +38,26 @@ It includes concrete implementations of the interfaces and abstract classes defi
 Developers include this artifact in their projects to run JSTL-based applications, as it provides the runtime components necessary for executing JSTL tags and features.
 This artifact typically includes the JSP tag library descriptor (TLD) files and the tag implementation classes.
 In summary, "jakarta.servlet.jsp.jstl-api" is used during development to provide access to the JSTL API for compilation, while "jakarta.servlet.jsp.jstl" is used at runtime to provide the implementation of JSTL functionality within a Java web application. Both artifacts are necessary for developing and running JSTL-based applications, with the API artifact being a compile-time dependency and the implementation artifact being a runtime dependency.
+
+=========================================================================================================================================================================
+
+Q3. What is the difference between Jakarta and Javax packages?
+==>
+
+The difference between Jakarta and javax packages lies in their historical evolution and their association with different Java EE (Enterprise Edition) specifications:
+
+javax Package:
+
+The javax package historically housed APIs and classes for various Java EE specifications.
+It stands for "Java Extension" and was initially created to contain optional packages that extend the core Java SE (Standard Edition) functionality.
+Many Java EE APIs were originally developed under the javax package, including servlets (javax.servlet), JSP (JavaServer Pages) (javax.servlet.jsp), JTA (Java Transaction API) (javax.transaction), JMS (Java Message Service) (javax.jms), and many others.
+However, over time, the javax package became associated with proprietary Oracle implementations due to its presence in the Java SE and Java EE platforms.
+
+Jakarta Package:
+
+The jakarta package is a newer namespace that evolved from the javax package as part of the Eclipse Jakarta EE project.
+It stands for "Jakarta Extension" and is used to house APIs and classes for Jakarta EE specifications, which are open-source and community-driven.
+In 2017, Oracle announced its intention to transfer Java EE to the Eclipse Foundation, resulting in the creation of the Eclipse Jakarta EE project (formerly known as Java EE). As part of this transition, package names had to change due to trademark issues.
+The jakarta package now serves as the namespace for Jakarta EE APIs, such as Jakarta Servlet API (jakarta.servlet), Jakarta Persistence API (jakarta.persistence), Jakarta JSON Processing API (jakarta.json), etc.
+The goal of the Jakarta EE project is to foster an open and vendor-neutral ecosystem for enterprise Java development, building on the foundations of Java EE.
+In summary, while the javax package historically housed Java EE APIs, the jakarta package is the modern namespace used for Jakarta EE APIs following the transfer of Java EE to the Eclipse Foundation. The transition to the jakarta namespace reflects the open-source and community-driven nature of Jakarta EE.
