@@ -1,0 +1,20 @@
+What does following dependency is used for "jakarta.servlet.jsp.jstl"?
+==>
+The dependency "jakarta.servlet.jsp.jstl" is used for integrating the Jakarta Standard Tag Library (JSTL) into a Java web application.
+JSTL is a collection of JSP custom tags used for common tasks such as iteration, conditional logic, and formatting. It simplifies JSP development by providing a set of standard tags that abstract away complex Java code.
+To use JSTL in a Java web application, you need to include the appropriate JAR files in your project's dependencies. The "jakarta.servlet.jsp.jstl" dependency typically refers to the JSTL implementation provided by the Jakarta EE specification.
+
+Here's an example of how you might include this dependency in a Maven project's pom.xml file:
+
+<dependency>
+    <groupId>jakarta.servlet.jsp.jstl</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+    <version>1.2.7</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.web</groupId>
+    <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+    <version>1.2.7</version>
+</dependency>
+This configuration includes both the JSTL API (jakarta.servlet.jsp.jstl-api) and the JSTL implementation (jakarta.servlet.jsp.jstl). Make sure to adjust the version numbers as needed for your project.
+Once you've added the JSTL dependency to your project, you can use JSTL tags in your JSP files to simplify common tasks and improve code readability.
