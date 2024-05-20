@@ -1,4 +1,4 @@
-What does following dependency is used for "jakarta.servlet.jsp.jstl"?
+Q1. What does following dependency is used for "jakarta.servlet.jsp.jstl"?
 ==>
 The dependency "jakarta.servlet.jsp.jstl" is used for integrating the Jakarta Standard Tag Library (JSTL) into a Java web application.
 JSTL is a collection of JSP custom tags used for common tasks such as iteration, conditional logic, and formatting. It simplifies JSP development by providing a set of standard tags that abstract away complex Java code.
@@ -18,3 +18,23 @@ Here's an example of how you might include this dependency in a Maven project's 
 </dependency>
 This configuration includes both the JSTL API (jakarta.servlet.jsp.jstl-api) and the JSTL implementation (jakarta.servlet.jsp.jstl). Make sure to adjust the version numbers as needed for your project.
 Once you've added the JSTL dependency to your project, you can use JSTL tags in your JSP files to simplify common tasks and improve code readability.
+
+=========================================================================================================================================================================
+
+Q2. What is the difference between "jakarta.servlet.jsp.jstl" and "jakarta.servlet.jsp.jstl-api"?
+==>
+The difference between "jakarta.servlet.jsp.jstl" and "jakarta.servlet.jsp.jstl-api" lies in their purpose and contents:
+
+jakarta.servlet.jsp.jstl-api:
+
+This artifact contains only the API (Application Programming Interface) classes and interfaces required for developing JSTL-based applications.
+It typically includes interfaces and abstract classes that define the contract for implementing JSTL functionality.
+Developers include this artifact in their projects to compile JSTL-based applications and to provide access to JSTL's APIs during development.
+The API artifact does not contain the implementation classes; it serves as a dependency for compilation purposes.
+jakarta.servlet.jsp.jstl:
+
+This artifact contains the implementation classes that provide the actual functionality of the JSTL tags and features.
+It includes concrete implementations of the interfaces and abstract classes defined in the API artifact.
+Developers include this artifact in their projects to run JSTL-based applications, as it provides the runtime components necessary for executing JSTL tags and features.
+This artifact typically includes the JSP tag library descriptor (TLD) files and the tag implementation classes.
+In summary, "jakarta.servlet.jsp.jstl-api" is used during development to provide access to the JSTL API for compilation, while "jakarta.servlet.jsp.jstl" is used at runtime to provide the implementation of JSTL functionality within a Java web application. Both artifacts are necessary for developing and running JSTL-based applications, with the API artifact being a compile-time dependency and the implementation artifact being a runtime dependency.
