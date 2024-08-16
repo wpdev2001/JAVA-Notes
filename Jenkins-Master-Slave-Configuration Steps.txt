@@ -1,0 +1,208 @@
+
+Jenkins : 
+UID : wpdev2001
+Piyush2001@
+
+SonarQube : 
+UID : admin
+Piyush@2001
+
+
+STEP 1 :- Setup and Configure SSHD Service file 
+
+cd /etc/ssh/
+vi sshd_config
+
+Change these parameters in file
+
+LogLevel INFO
+
+PermitRootLogin yes
+
+PubkeyAuthentication yes
+
+AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
+
+PasswordAuthentication yes
+
+save file. 
+
+systemctl restart sshd
+
+STEP 2:- Set password for user (user:- root)
+
+passwd 
+
+STEP 3:- SSH KEY GENERATION
+
+ssh-keygen -t rsa -b 2048 -m PEM
+
+STEP 4:- COPY PUBLIC KEY OF BASTION VM to other VM's 
+
+path:- cd .ssh/ 
+
+vi authorized_keys >> ssh-rsa 
+
+STEP 5:- Create ssh config in ssh dir 
+
+cd .ssh/
+
+vi config 
+
+Host HOSTNAME
+    HostName <IP> or <Domain Name>
+    User root (depends on what you are using)
+    IdentityFile ~/.ssh/id_rsa
+
+to test , 
+
+run the command >> ssh jenkins-master
+
+STEP 6:- Install Haproxy and Certbot 
+
+apt install -y haproxy 
+
+systemctl status haproxy. 
+
+Go to duckdns >> login with Google acc >> create a subdomain >> add the IP of Bastion VM. 
+
+apt install -y python3-certbot-nginx 
+
+After this , stop haproxy service >> systemctl stop haproxy 
+
+Check Nginx status >> systemctl status nginx 
+
+certbot --nginx -d domain_name 
+
+1. Type email address
+2. A
+3. Y
+
+1. Only http 
+2 http to HTTPS ->> use this option * 
+
+cd /etc/letsencrypt/live/domain_name
+cat fullchain.pem privkey.pem > certt.pem
+
+mkdir -p /etc/haproxy/certs
+mv certt.pem /etc/haproxy/certs 
+
+STEP 7:- Configure HAPROXY
+
+global
+    log /dev/log local0
+    log /dev/log local1 notice
+    maxconn 4096
+    user haproxy
+    group haproxy
+    daemon
+        ssl-default-bind-options no-sslv3
+        tune.ssl.default-dh-param 2048
+
+defaults
+    log global
+    mode http
+    option httplog
+    option dontlognull
+    retries 3
+    timeout connect 5000
+    timeout client 50000
+    timeout server 50000
+
+listen stats
+    bind *:9000
+    mode http
+    stats enable
+    stats uri /stats
+    stats realm Haproxy\ Statistics
+
+frontend k8s_services_front
+    bind *:443 ssl crt /etc/haproxy/certs/cert.pem  # Replace with your SSL certificate
+    mode http
+    option http-keep-alive
+    option forwardfor
+
+    # acl is_kubernetes_dashboard path_beg /dashboard
+    acl is_sonarqube path_beg /sonarqube
+    redirect scheme https if !{ ssl_fc }
+
+    default_backend jenkins_backend
+    use_backend sonarqube_backend if is_sonarqube
+
+backend jenkins_backend
+      mode http
+      balance roundrobin
+      http-request set-header X-Forwarded-Port %[dst_port]
+      http-request add-header X-Forwarded-Proto https if { ssl_fc }
+      server master0 34.133.86.253:8080 check fall 3 rise 2
+
+backend sonarqube_backend
+      mode http
+      balance roundrobin
+      http-request set-header X-Forwarded-Port %[dst_port]
+      http-request add-header X-Forwarded-Proto https if { ssl_fc }
+      server sonar 34.170.247.232:9000/sonarqube check fall 3 rise 2
+
+Set and make changes a/c to requirement and server's
+
+Next check config
+
+haproxy -f haproxy.cfg -c >> If valid 
+
+systemctl restart haproxy
+
+STEP 8. Configure SonarQube
+
+cd /opt/SonarQube/conf
+
+vi sonar.properties
+
+Search for sonar.web.context and set it to /SonarQube (sonar.wb.context: /sonarqube)
+
+save 
+
+systemctl restart sonar
+
+STEP 9:- JENKINS CONFIGURATION AT DASHBOARD 
+
+GO TO MANAGE JENKINS --> SYSTEM --> JENKINS URL change to newly access url apply and save. 
+
+STEP 10:- JENKINS MASTER - SLAVE 
+
+Go to NODES --> NODE NAME select permanent agent --> 
+set Remote root directory
+Labels (use same name node name)
+Launch method -- Launch Method Via SSH
+
+Hostname
+
+credentials --> Jenkins --> Under Global Cred --> Kind- SSH Username and Password   
+
+username -- (root)
+
+password :- Go to Jenkins-master VM -- cd .ssh/ cat id_rsa copy the key 
+
+Now select private key -- add private key --> paste the key of master vm 
+
+Then Click "ADD"
+
+Host Key Verification strategy -- Non-Verifying 
+
+Click Save
+
+Check for this O/P inside logs:
+
+SSHLauncher{host='34.27.246.16', port=22, credentialsId='JENKINS-SLAVE-ID', jvmOptions='', javaPath='', prefixStartSlaveCmd='', suffixStartSlaveCmd='', launchTimeoutSeconds=60, maxNumRetries=10, retryWaitTime=15, sshHostKeyVerificationStrategy=hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy, tcpNoDelay=true, trackCredentials=true}
+[08/16/24 06:11:40] [SSH] Opening SSH connection to 34.27.246.16:22.
+[08/16/24 06:11:40] [SSH] WARNING: SSH Host Keys are not being verified. Man-in-the-middle attacks may be possible against this connection.
+[08/16/24 06:11:40] [SSH] Authentication successful.
+
+Remoting version: 3248.3250.v3277a_8e88c9b_
+Launcher: SSHLauncher
+Communication Protocol: Standard in/out
+This is a Unix agent
+Agent successfully connected and online
+ 
+
+
+
