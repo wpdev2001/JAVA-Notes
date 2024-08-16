@@ -9,3 +9,7 @@ Passwords:
 Uname : devadmin
 PPK pass: Piyush123
 Jenkins and SonarQube : Piyush@2001
+
+<br>
+<h1>Jenkins Master Slave integration steps:</h1><br>
+
