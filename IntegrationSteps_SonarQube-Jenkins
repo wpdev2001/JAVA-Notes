@@ -1,0 +1,17 @@
+SonarQube & Jenkins:
+-----------------------
+
+STEP 1: Generate global access token from SonarQube
+Go to sonarqube-->Go to admininstrator--> Select Myaccount --> Security --> Enter Token name --> Select token type(Global analysis token) & Expiration time period-->Click Generate
+
+STEP 2: Install SonarQube plugins of Jenkins 
+Go to plugins --> search avail. plugins --> search for sonar and quality gates plugins and install all
+Go to manage Jenkins --> Go to credentials --> Add global credentials --> Select Kind 'Secret text' --> Add the key as Jenkins Sonar token 
+
+STEP 3: Configure SonarQube for Jenkins
+Go to manage Jenkins --> tools --> SonarQube Scanner installations(field) --> Add SonarQube Scanner --> give name & click checkbox install automatically
+Go to manage Jenkins --> System --> SonarQube installations --> click on add --> Give name(SONAR-SERVER) --> Add server SonarQube server url
+
+STEP 4 : CONFIGURE QUALITY GATES:
+Go to SonarQube --> Select Administration Section--> Click on Configuration --> Select Webhooks--> Click create --> Give name(sonarqube-webhook) -->
+Add URL: <Jenkins Master URL>/sonarqube-webhook/
