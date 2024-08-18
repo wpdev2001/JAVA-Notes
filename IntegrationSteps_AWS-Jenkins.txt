@@ -1,0 +1,15 @@
+AWS Jenkins:
+------------
+
+STEP 1: INSTALL AWS PLUGINS FOR JENKINS
+Go to Jenkins --> Manage Jenkins--> Go to plugins --> search avail. plugins --> Search AWS SDK(All)
+
+STEP 2 : Go to AWS and generate Access Keys
+
+STEP 3 : Install AWS Cli on Jenkins slave
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 
+apt install -y unzip
+unzip awscliv2.zip
+sudo ./aws/install
+
+run aws configure and configure aws
