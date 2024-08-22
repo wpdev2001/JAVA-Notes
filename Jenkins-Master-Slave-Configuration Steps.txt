@@ -1,3 +1,26 @@
+Switch to root user:
+====================
+do apt get update
+sudo -u
+
+cd .ssh
+vi config ==> Edit ip's
+-----------------------
+Host jenkins-master
+    HostName <Add IP>
+    User root
+    IdentityFile ~/.ssh/id_rsa
+
+Host jenkins-slave
+    HostName <Add IP>
+    User root
+    IdentityFile ~/.ssh/id_rsa
+
+Host sonarqube
+    HostName <Add IP>
+    User root
+    IdentityFile ~/.ssh/id_rsa
+
 
 Jenkins : 
 UID : wpdev2001
