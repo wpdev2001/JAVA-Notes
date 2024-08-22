@@ -1,0 +1,175 @@
+1  apt-get update
+    2  cd /etc/ssh/
+    3  ls
+    4  vi sshd_config
+    5  systemctl restart sshd
+    6  systemctl status sshd
+    7  passwd
+    8  ls
+    9  cd ~
+   10  lls
+   11  ssh-keygen -t rsa -b 2048 -m PEM
+   12  cd .ssh/
+   13  ls
+   14  cd ~
+   15  history
+   16  ls
+   17  ssh-copy-id -i ~/.ssh/id_rsa.pub root@34.133.86.253
+   18  cat .ssh/id_rsa.pub
+   19  ls
+   20  cd .ssh/
+   21  ls
+   22  vi config
+   23  ls
+   24  cd ~
+   25  ls
+   26  ssh jenkins-master
+   27  ssh jenkins-slave
+   28  ssh jenkins-master
+   29  ls
+   30  ssh jenkins-slave
+   31  ls
+   32  apt install -y haproxy
+   33  ls
+   34  cd /etc/haproxy/
+   35  ls
+   36  > haproxy.cfg
+   37  vi haproxy.cfg
+   38  cd ~
+   39  ls
+   40  nslookup dev-portal.duckdns.org
+   41  ls
+   42  apt search certbot
+   43  apt install -y python3-certbot-nginx
+   44  systemctl status nginx
+   45  ls
+   46  certbot --nginx -d dev-portal.duckdns.org
+   47  ls
+   48  cd /etc/letsencrypt/live/dev-portal.duckdns.org/
+   49  ls
+   50  cat fullchain.pem privkey.pem > dev-cert.pem
+   51  ls
+   52  cat dev-cert.pem
+   53  ls
+   54  mv dev-cert.pem /etc/haproxy/
+   55  cd ~
+   56  ls
+   57  cd /etc/haproxy/
+   58  ls
+   59  mv dev-cert.pem cert.pem
+   60  ls
+   61  mkdir certs
+   62  mv cert.pem /etc/haproxy/certs/
+   63  ls
+   64  vi haproxy.cfg
+   65  systemctl stop nginx
+   66  haproxy -f haproxy.cfg -c
+   67  systemctl restart haproxy
+   68  systemctl status haproxy
+   69  cd ~
+   70  ls
+   71  ssh sonarqube
+   72  vi /etc/haproxy/haproxy.cfg
+   73  systemctl restart haproxy
+   74  systemctl status haproxy
+   75  ssh jenkins-master
+   76  cd .ssh/
+   77  ls
+   78  cd ~
+   79  cd .ssh/
+   80  > known_hosts
+   81  cat known_hosts
+   82  cd `
+   83  cd ~
+   84  ssh jenkins-master
+   85  cat known_hosts
+   86  cd .ssh/
+   87  cat known_hosts
+   88  cd ~
+   89  ls
+   90  cat /etc/ssh/sshd_config
+   91  cat .ssh/config
+   92  cat /etc/haproxy/haproxy.cfg
+   93  apt-get update
+   94  cd .ssh
+   95  ls
+   96  > known_hosts
+   97  vi config
+   98  cd ..
+   99  cd etc
+  100  cd /etc
+  101  cd haproxy/
+  102  vi haproxy.cfg
+  103  ls
+  104  cd ~
+  105  ls
+  106  systemctl restart haproxy
+  107  systemctl stop nginx
+  108  systemctl restart haproxy
+  109  ssh jenkins-master
+  110  ls
+  111  cd /etc/haproxy/
+  112  vi haproxy.cfg
+  113  haproxy -f haproxy.cfg -c
+  114  systemctl restart haproxy
+  115  cd ~
+  116  ls
+  117  ssh jenkins-slave
+  118  exit
+  119  apt-get update
+  120  cd .ssh
+  121  vi config
+  122  cd ~
+  123  ls
+  124  cd /etc/h
+  125  cd /etc/haproxy/
+  126  ls
+  127  vi haproxy.cfg
+  128  haproxy -f haproxy.cfg -c
+  129  systemctl restart haproxy
+  130  systemctl enable haproxy
+  131  cd ~
+  132  ls
+  133  cd .ssh/
+  134  ls
+  135  > known_hosts
+  136  cd ~
+  137  ls
+  138  cd .
+  139  cd .ssh/
+  140  vi config
+  141  ssh jenkins-master
+  142  ls
+  143  cd ~
+  144  ls
+  145  vi /etc/hosts
+  146  cat /etc/hosts
+  147  vi .ssh/config
+  148  ssh jenkins-master
+  149  ssh jenkins-slave
+  150  ssh sonarqube
+  151  ls
+  152  ls -a
+  153  ls -ltr
+  154  cd ssh
+  155  cd ./ssh
+  156  clear
+  157  ls -a
+  158  cd ~
+  159  ls
+  160  cd .ssh/
+  161  ls
+  162  cat config
+  163  vi config
+  164  systemctl stop nginx
+  165  script
+  166  ls
+  167  cat typescripts
+  168  cat typescript
+  169  ls
+  170  less typescript
+  171  ye
+  172  yes
+  173  ls
+  174  cat /etc/haproxy/haproxy.cfg
+  175  history
