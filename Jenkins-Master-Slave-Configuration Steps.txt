@@ -1,4 +1,4 @@
-Switch to root user:
+1. Switch to root user:
 ====================
 do apt get update
 sudo -u
@@ -20,6 +20,22 @@ Host sonarqube
     HostName <Add IP>
     User root
     IdentityFile ~/.ssh/id_rsa
+
+2. Update the bastion IP in the duckdns
+
+3. Update the IP in the haproxy
+
+cd /etc/haproxy
+vi haproxy.cfg
+
+Update IPs
+
+4. Logged in to Jenkins console
+
+    a. Go to nodes and update the jenkins ip
+    b. Go to system and update the sonarqube ip
+
+===========================================================================================================================
 
 
 Jenkins : 
