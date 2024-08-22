@@ -1,0 +1,59 @@
+ubuntu@ip-172-31-4-76:~$ sudo su
+root@ip-172-31-4-76:/home/ubuntu# history
+    1  apt-get update
+    2  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    3  apt install -y unzip
+    4  unzip awscliv2.zip
+    5  sudo ./aws/install
+    6  aws configure
+    7  ls
+    8  cd ~
+    9  apt install -y docker.io
+   10  systemctl status docker
+   11  ls
+   12  docker run --name mycart -p 8080:8080 -d 017764492635.dkr.ecr.ap-south-1.amazonaws.com/mycart:1.0-11
+   13  aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 017764492635.dkr.ecr.ap-south-1.amazonaws.com
+   14  aws configure
+   15  aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 017764492635.dkr.ecr.ap-south-1.amazonaws.com
+   16  docker run --name mycart -p 8080:8080 -d 017764492635.dkr.ecr.ap-south-1.amazonaws.com/mycart:1.0-11
+   17  docker ps
+   18  docker logs 8889c9469e10
+   19  ls
+   20  apt install python3-nginx-certbot
+   21  apt search certbot
+   22  apt install python3-certbot-nginx -y
+   23  ls
+   24  apt install haproxy -y
+   25  ls
+   26  cd /etc/haproxy/
+   27  ls
+   28  chown -R ubuntu:ubuntu /etc/haproxy/
+   29  cat haproxy.cfg
+   30  ls
+   31  cd ~
+   32  ls
+   33  certbot --nginx -d mycart.duckdns.org
+   34  ls
+   35  cd /etc/letsencrypt/live/mycart.duckdns.org/
+   36  ls
+   37  cat fullchain.pem privkey.pem > devcert.pem
+   38  ls
+   39  mkdir -p /etc/haproxy/certs
+   40  mv devcert.pem /etc/haproxy/certs/cert.pem
+   41  ls
+   42  cd ~
+   43  cd /etc/haproxy/certs/
+   44  ls
+   45  cat cert.pem
+   46  cd /etc/letsencrypt/live/mycart.duckdns.org/
+   47  cat privkey.pem
+   48  cd ~
+   49  ls
+   50  systemctl stop nginx
+   51  cd /etc/haproxy/
+   52  haproxy -f haproxy.cfg -c
+   53  systemctl restart haproxy
+   54  systemctl status haproxy
+   55  docker.ps
+   56  docker ps
+   57  docker logs 8889c9469e10
