@@ -70,6 +70,11 @@ i.e.,
   b. Not having any return type
   c. Not having modifier
 
+Some additional points about Lambda expression:
+  i.   If body has just one statement then we can remove curly braces
+  ii.  Use type inference, compiler guess the situation or context
+  iii. No return keyword
+
 2. Stream API:
 Java Stream API for Bulk data operations on collections.
 
