@@ -53,3 +53,37 @@ Conclusion
 Java’s move toward functional programming is part of a broader trend in software development where languages increasingly support a mix of paradigms. Functional programming in Java improves code conciseness, readability, and expressiveness, while also enabling better performance through parallelism and reactive programming. It aligns Java with modern industry trends and provides developers with powerful tools for writing clean, efficient, and scalable code.
 
 This move makes Java a more versatile and modern language, suitable for a wider range of applications, from traditional enterprise systems to modern web applications and big data processing.
+
+
+=====================================================================================================================================================
+
+Features of JAVA 8:
+-------------------
+
+1. Lambda Expressions
+Lamda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method
+example : (x,y) -> x+y
+
+2. Stream API:
+Java Stream API for Bulk data operations on collections.
+
+3. Date and Time API
+Under the package java.time
+Java 8 offers a new date-time API
+
+4. Base64 Encode Decode
+
+5. Method reference and constructor reference
+:: operator
+
+6. Default & Static methods in Interface
+
+7. Functional interface
+functional interface is the interface that has exactly one abstract method.
+
+8. 
+Optional class 
+Java IO improvements
+Collection API improvements
+
+
