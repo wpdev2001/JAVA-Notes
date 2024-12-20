@@ -64,6 +64,12 @@ Features of JAVA 8:
 Lamda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method
 example : (x,y) -> x+y
 
+Lambda expression is an anonymous function
+i.e., 
+  a. Not having any name
+  b. Not having any return type
+  c. Not having modifier
+
 2. Stream API:
 Java Stream API for Bulk data operations on collections.
 
