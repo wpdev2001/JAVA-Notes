@@ -105,7 +105,7 @@ Java 8 offers a new date-time API
 7. Functional interface
 functional interface is the interface that has exactly one abstract method but can have any number of defaults and static methods. We invoke lamda expression using functional interface.
 before 1.8 version only public abstract methods were allowed in the interface.
-NOTE: Empty interface can't be empty
+NOTE: Functional interface can't be empty
 We use @FunctionalInterface annotation to define the functional interface(but it is optional)
 
 What is the advantages of this annotation?
